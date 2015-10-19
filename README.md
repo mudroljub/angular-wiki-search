@@ -11,6 +11,4 @@ $ bower install
 $ open index.html
 ```
 
-If you don't use Bower, you can manually resolve dependencies from bower.json file.
-
-Enjoy searching Wikipedia!
+Enjoy power searching Wikipedia!
