@@ -13,7 +13,7 @@
 
 <body ng-app='wikiModul'>
 
-    <main ng-controller='WikiKontrol as wiki' ng-init='wiki.findPage()' class="container">
+    <main ng-controller='WikiKontrol as wiki' ng-init='wiki.findPage()' class="container main">
         <h1>Angular Wikipedia Module</h1>
 
         Search Wikipedia:
@@ -23,9 +23,11 @@
         {{wiki.error}}
 
         <section class="wiki-article">
-            <h1 class="text text-success">{{wiki.page.title}}</h1>
+            <h1 class="text-info">{{wiki.page.title}}</h1>
             <div ng-bind-html='wiki.page.extract'></div>
         </section>
+
+        <p class="text-info pull-right"><a href="#">Read on Wikipedia >> </a></p>
 
     </main>
 
