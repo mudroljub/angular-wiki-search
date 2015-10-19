@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <title>AngularJS Wiki Module</title>
+    <script src='bower_components/angular/angular.min.js'></script>
+    <script src='bower_components/angular-sanitize/angular-sanitize.min.js'></script>
+    <script src='app.js'></script>
+</head>
+<body ng-app='wikiModul'>
+
+    <main ng-controller='WikiKontrol as wiki' ng-init='wiki.findPage()'>
+        <h1>Angular Wikipedia Module</h1>
+
+        Search Wikipedia: <input ng-model='wiki.term' ng-change='wiki.findPage()'>
+
+        <pre>{{wiki.json | json}}</pre>
+        {{wiki.error}}
+
+        <h3>{{wiki.page.title}}</h3>
+        <div ng-bind-html='wiki.page.extract'></div>
+
+
+    </main>
+
+</body>
+</html>

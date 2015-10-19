@@ -1,0 +1,29 @@
+{
+  "name": "Angular Wiki Module",
+  "authors": [
+    "mudroljub <mudroljub@gmail.com>"
+  ],
+  "description": "AngularJs module for Wikipedia API",
+  "main": "app.js",
+  "moduleType": [],
+  "keywords": [
+    "angular",
+    "wikipedia",
+    "api",
+    "angularjs",
+    "wikipedia-api"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.7",
+    "angular-sanitize": "~1.4.7"
+  }
+}
