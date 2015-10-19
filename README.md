@@ -1,4 +1,4 @@
-# angular-wiki-module
+# Angular Wiki Module
 AngularJS module for consuming Wikipedia (MediaWiki) API
 
 ## Start aplication
