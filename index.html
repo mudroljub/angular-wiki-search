@@ -3,16 +3,20 @@
 <head>
     <meta charset='UTF-8'>
     <title>AngularJS Wiki Module</title>
+    <link rel="stylesheet" href="bower_components/bootstrap-css-only/css/bootstrap.min.css">
+
     <script src='bower_components/angular/angular.min.js'></script>
     <script src='bower_components/angular-sanitize/angular-sanitize.min.js'></script>
     <script src='app.js'></script>
 </head>
+
 <body ng-app='wikiModul'>
 
-    <main ng-controller='WikiKontrol as wiki' ng-init='wiki.findPage()'>
+    <main ng-controller='WikiKontrol as wiki' ng-init='wiki.findPage()' class="container">
         <h1>Angular Wikipedia Module</h1>
 
-        Search Wikipedia: <input ng-model='wiki.term' ng-change='wiki.findPage()'>
+        Search Wikipedia:
+        <input ng-model='wiki.term' ng-change='wiki.findPage()'>
 
         <pre>{{wiki.json | json}}</pre>
         {{wiki.error}}
@@ -24,4 +28,5 @@
     </main>
 
 </body>
+
 </html>
