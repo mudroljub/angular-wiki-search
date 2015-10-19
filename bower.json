@@ -3,15 +3,17 @@
   "authors": [
     "mudroljub <mudroljub@gmail.com>"
   ],
-  "description": "AngularJs module for Wikipedia API",
+  "description": "AngularJS module for consuming Wikipedia API",
   "main": "app.js",
   "moduleType": [],
   "keywords": [
     "angular",
     "wikipedia",
+    "mediawiki",
     "api",
     "angularjs",
-    "wikipedia-api"
+    "wikipedia-api",
+    "mediawiki-api",
   ],
   "license": "MIT",
   "homepage": "",
