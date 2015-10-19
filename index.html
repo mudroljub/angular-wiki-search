@@ -4,6 +4,7 @@
     <meta charset='UTF-8'>
     <title>AngularJS Wiki Module</title>
     <link rel="stylesheet" href="bower_components/bootstrap-css-only/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
 
     <script src='bower_components/angular/angular.min.js'></script>
     <script src='bower_components/angular-sanitize/angular-sanitize.min.js'></script>
@@ -21,9 +22,10 @@
         <pre>{{wiki.json | json}}</pre>
         {{wiki.error}}
 
-        <h3>{{wiki.page.title}}</h3>
-        <div ng-bind-html='wiki.page.extract'></div>
-
+        <section class="wiki-article">
+            <h1 class="text text-success">{{wiki.page.title}}</h1>
+            <div ng-bind-html='wiki.page.extract'></div>
+        </section>
 
     </main>
 
