@@ -11,4 +11,4 @@ $ bower install
 $ open index.html
 ```
 
-You can also manually install dependencies from bower.json file.
+If you don't use bower, you can manually resolve dependencies from bower.json file.
