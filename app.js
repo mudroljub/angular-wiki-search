@@ -4,6 +4,14 @@
 	// objediniti funkcije da se obe pozivaju iz jedne na svaku promenu
 	// ako ima jedan rezultat, prikazuje jedan, ako ima vise lista ih
 
+	/*
+        svi parametri: https://www.mediawiki.org/w/api.php
+        isprobavanje: https://en.wikipedia.org/wiki/Special:ApiSandbox
+
+        pretvara pageId u url: https://en.wikipedia.org/w/api.php?action=query&prop=info&pageids=18630637&inprop=url
+        moze i direktno otvaranje: https://en.wikipedia.org/?curid=18630637
+    */
+
 	'use strict';
 	angular
 		.module("wikiModul", ['ngSanitize'])
@@ -22,15 +30,15 @@
 
 		/*** PUBLIC METHODS ***/
 
-		wiki.loadPage = function (searchTerm) {
+		wiki.loadPage = function (term) {
 
 			var params = {
 				action: 'query',
 				prop: 'extracts|pageimages|pageterms',
 				redirects: '',
-				titles: searchTerm
+				titles: term
 			};
-			var paramUrl = createParamUrl(params, searchTerm);
+			var paramUrl = createParamUrl(params, term);
 
 			$http.jsonp(paramUrl)
 				.success(function (data) {
@@ -50,14 +58,18 @@
 		}; // loadPage
 
 
-		wiki.searchWikipedia = function(searchTerm){
+		wiki.searchWikipedia = function(term){
 
 			var params = {
 				action: 'query',
-				list: 'search',
-				srsearch: searchTerm
+		        generator: 'search',
+		        gsrsearch: term,
+		        prop: 'pageimages|extracts',
+		        exintro: '',
+				pilimit: 'max', // za koliko clanaka vraca slike
+		        exlimit: 'max' // max prikazuje extrakt za sve, inace samo za prvi
 			};
-			var paramUrl = createParamUrl(params, searchTerm);
+			var paramUrl = createParamUrl(params, term);
 
 			$http.jsonp(paramUrl)
 				.success(function (data) {
