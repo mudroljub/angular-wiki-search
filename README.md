@@ -25,7 +25,7 @@ Those methods getting data from [Wikipedia API](http://en.wikipedia.org/w/api.ph
 
 Both methods have those common params:
 ```js
-{
+var params = {
     action: 'query',
     prop: 'extracts|pageimages',    // get article's content and images
     format: 'json',
@@ -37,7 +37,7 @@ Both methods have those common params:
 Specific params for `openArticle` method are:
 
 ```js
-var params = {
+{
     titles: title,   // title is a variable
     redirects: ''  // auto-redirecting to an article
 };
