@@ -65,16 +65,16 @@
 		        generator: 'search',
 		        gsrsearch: term,
 		        prop: 'pageimages|extracts',
-		        exintro: '',
-				pilimit: 'max', // za koliko clanaka vraca slike
-		        exlimit: 'max' // max prikazuje extrakt za sve, inace samo za prvi
+		        exintro: '',	// only article's intro 
+				pilimit: 'max', // images for all articles, otherwise only for the first
+		        exlimit: 'max' // extracts for all articles, otherwise only for the first
 			};
 			var paramUrl = createParamUrl(params, term);
 
 			$http.jsonp(paramUrl)
 				.success(function (data) {
 					wiki.json = data.query;
-					wiki.results = data.query.search;
+					wiki.results = data.query.pages;
 				})
 				.error(function(){
 					wiki.error = "Oh no, there was some error in geting data.";
