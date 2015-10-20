@@ -33,7 +33,7 @@ var params = {
 };
 ```
 
-Specific params for `wiki.openArticle(title)` are:
+Specific params for `openArticle()` are:
 
 ```js
 var params = {
@@ -43,7 +43,7 @@ var params = {
 };
 ```
 
-Specific params for `wiki.searchWikipedia(term)` are:
+Specific params for `searchWikipedia()` are:
 
 ```js
 var params = {
