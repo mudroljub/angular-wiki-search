@@ -51,7 +51,7 @@ var params = {
     gsrsearch: term,  // term is a variable
     pilimit: 'max', // get images for all results
     exlimit: 'max', // get content for all results
-    exintro: '',    // get only article's intro
+    exintro: '',    // only article's intro
 };
 ```
 
