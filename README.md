@@ -48,7 +48,7 @@ var params = {
 };
 ```
 
-Both methods have common params:
+Both methods also have common params:
 
 ```js
 params.format = 'json';
