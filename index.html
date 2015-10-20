@@ -33,9 +33,9 @@
 
         <article ng-repeat="page in wiki.results" class="clearfix">
             <h3>{{page.title}}</h3>
-            <img ng-src="{{page.thumbnail.source}}" alt="{{page.title}}" class="img-thumbnail">
+            <img ng-src="{{page.thumbnail.source}}" alt="{{page.title}}" class="img-thumbnail" ng-show="page.thumbnail.source">
             <section ng-bind-html='page.extract'></section>
-            <p class="text-info pull-right"><a href="#">Read on Wikipedia >> </a></p>
+            <p class="text-info pull-right"><a ng-href="https://en.wikipedia.org/wiki/{{page.title}}" target="_blank">Read on Wikipedia >> </a></p>
         </article>
 
 
