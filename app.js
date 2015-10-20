@@ -1,6 +1,7 @@
 (function () {
 
 	// ubaciti back dugme i autofokus
+	// vise rezultata
 	// istovetni rezultat staviti uvek na pocetak (vidi npr form)
 
 	'use strict';
