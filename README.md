@@ -25,7 +25,7 @@ Those methods getting data from [Wikipedia API](http://en.wikipedia.org/w/api.ph
 
 Both methods have those common params:
 ```js
-var params = {
+{
     action: 'query',
     prop: 'extracts|pageimages',    // get article's content and images
     format: 'json',
@@ -46,7 +46,7 @@ var params = {
 Specific params for `searchWikipedia` method are:
 
 ```js
-var params = {
+{
     generator: 'search',
     gsrsearch: term,  // term is a variable
     pilimit: 'max', // enable images for all results
