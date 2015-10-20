@@ -20,8 +20,8 @@ If you don't use Bower, you can manually resolve dependencies from bower.json fi
 ## Documentation
 
 The main WikiController consists of two main public methods:
-- wiki.searchWikipedia(term)
-- wiki.openArticle(title)
+- `wiki.searchWikipedia(term)`
+- `wiki.openArticle(title)`
 
 Those methods communicates with the Wikipedia API.
 
