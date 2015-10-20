@@ -33,6 +33,15 @@
                 Search for:
                 <input ng-model='wiki.searchTerm' ng-change='wiki.searchWikipedia(wiki.searchTerm)' class="form-control">
             </label>
+            <label>
+                Search in:
+                <!-- https://docs.angularjs.org/api/ng/directive/ngOptions -->
+                <select class="form-control" name="">
+                    <option value="prefix">prefix</option>
+                    <option value="intitle">titles</option>
+                    <option value="">content</option>
+                </select>
+            </label>
             <label>Max results:
                 <input type="number" min="1" max="50" ng-model='wiki.searchParams.gsrlimit' ng-change='wiki.searchWikipedia(wiki.searchTerm)' class="form-control">
             </label>

@@ -28,7 +28,7 @@
 			gsrlimit: 10, // broj rezultata, max 50
 			pilimit: 'max', // images for all articles, otherwise only for the first
 			exlimit: 'max', // extracts for all articles, otherwise only for the first
-			exintro: '' // only article's intro
+			exintro: '' // extracts intro
 		};
 
 		/*** PUBLIC METHODS ***/
