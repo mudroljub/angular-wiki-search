@@ -18,12 +18,12 @@ Enjoy power searching Wikipedia!
 
 ## Documentation
 The main WikiController consists of two main public methods:
-- `wiki.searchWikipedia(term)`
 - `wiki.openArticle(title)`
+- `wiki.searchWikipedia(term)`
 
 Those methods getting data from [Wikipedia API] ([https://www.mediawiki.org/wiki/API:Main_page](https://www.mediawiki.org/wiki/API:Main_page)).
 
-Params for `wiki.searchWikipedia()` are:
+Params for `wiki.openArticle(title)` are:
 
 ```js
 var params = {
@@ -31,6 +31,20 @@ var params = {
     prop: 'extracts|pageimages|pageterms',  // page content, images and synonyms
     redirects: '',  // automatically redirect
     titles: title   // search term
+};
+```
+
+Params for `wiki.searchWikipedia(term)` are:
+
+```js
+var params = {
+    action: 'query',
+    generator: 'search',
+    gsrsearch: term,
+    prop: 'pageimages|extracts',
+    exintro: '',    // only article's intro
+    pilimit: 'max', // images for all articles, otherwise only for the first
+    exlimit: 'max' // extracts for all articles, otherwise only for the first
 };
 ```
 
