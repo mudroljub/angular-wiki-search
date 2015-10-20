@@ -49,9 +49,9 @@ Specific params for `searchWikipedia` method are:
 var params = {
     generator: 'search',
     gsrsearch: term,  // term is a variable
-    exintro: '',    // get only article's content intro
-    pilimit: 'max', // images for all articles, otherwise only for the first
-    exlimit: 'max' // content for all articles, otherwise only for the first
+    pilimit: 'max', // get images for all articles
+    exlimit: 'max', // get content for all articles
+    exintro: '',    // get only content intro
 };
 ```
 
