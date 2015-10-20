@@ -3,6 +3,7 @@
 	// ubaciti back dugme i autofokus
 	// vise rezultata
 	// istovetni rezultat staviti uvek na pocetak (vidi npr form)
+	// isprobati ostale wiki projekte
 
 	'use strict';
 	angular
