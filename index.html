@@ -16,19 +16,18 @@
         <h1>Wikipedia power search</h1>
     </header>
 
-    <main ng-controller='WikiController as wiki' ng-init='wiki.searchWikipedia(wiki.term)' class="container main" ng-cloak>
+    <main ng-controller='WikiController as wiki' ng-init='wiki.searchWikipedia(wiki.searchTerm)' class="container main" ng-cloak>
 
         <label>
             Search for:
-            <input ng-model='wiki.term' ng-change='wiki.searchWikipedia(wiki.term)'>
+            <input ng-model='wiki.searchTerm' ng-change='wiki.searchWikipedia(wiki.searchTerm)'>
         </label>
 
-        <pre>{{wiki.json | json}}</pre>
         {{wiki.error}}
 
         <section ng-show='wiki.page'>
             <article class="wiki-article clearfix">
-                <h1 ng-click="wiki.searchWikipedia(wiki.page.title)" class="text-info pointer">{{wiki.page.title}}</h1>
+                <h1 title="Search for this term" ng-click="wiki.searchWikipedia(wiki.page.title)" class="text-info pointer">{{wiki.page.title}}</h1>
                 <img ng-src="{{wiki.page.thumbnail.source}}" alt="{{wiki.page.title}}" class="img-thumbnail" ng-show="wiki.page.thumbnail.source">
                 <section ng-bind-html='wiki.page.extract'></section>
             </article>
@@ -36,7 +35,7 @@
         </section>
 
         <article ng-repeat="page in wiki.results" class="clearfix">
-            <h3 ng-click="wiki.openArticle(page.title)" class="text-info pointer">{{page.title}}</h3>
+            <h3 title="Open this article" ng-click="wiki.openArticle(page.title)" class="text-info pointer">{{page.title}}</h3>
             <img ng-src="{{page.thumbnail.source}}" alt="{{page.title}}" class="img-thumbnail" ng-show="page.thumbnail.source">
             <section ng-bind-html='page.extract'></section>
             <p class="text-info pull-right"><a ng-href="https://en.wikipedia.org/wiki/{{page.title}}" target="_blank">Read on Wikipedia >> </a></p>

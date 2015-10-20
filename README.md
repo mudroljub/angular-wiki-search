@@ -56,5 +56,5 @@ Specific params for `searchWikipedia` method are:
 ```
 
 ## To-do list
-- $http.jsonp error handling
-- maybe to separate services from controllers (but it is still to small)
+- error handling
+- maybe $http.jsonp to separate services

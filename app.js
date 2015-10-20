@@ -1,18 +1,6 @@
 (function () {
 
-	// napraviti funkciju koja pretrazuje strane
-	// objediniti funkcije da se obe pozivaju iz jedne na svaku promenu
-	// ako ima jedan rezultat, prikazuje jedan, ako ima vise lista ih
-
 	// ubaciti back dugme i autofokus
-
-	/*
-        svi parametri: https://www.mediawiki.org/w/api.php
-        isprobavanje: https://en.wikipedia.org/wiki/Special:ApiSandbox
-
-        pretvara pageId u url: https://en.wikipedia.org/w/api.php?action=query&prop=info&pageids=18630637&inprop=url
-        moze i direktno otvaranje: https://en.wikipedia.org/?curid=18630637
-    */
 
 	'use strict';
 	angular
@@ -23,8 +11,7 @@
 	function WikiController($http) {
 
 		var wiki = this;
-		wiki.term = 'happiness';	// default
-		wiki.json = {}; // samo u razvoju, posle obrisati
+		wiki.searchTerm = 'happiness';	// default
 		wiki.page = null;
 		wiki.results = null;
 		wiki.error = "";
@@ -33,7 +20,7 @@
 		/*** PUBLIC METHODS ***/
 
 		wiki.openArticle = function (title) {
-
+			wiki.searchTerm = title;	// update search term
 			var params = {
 				titles: title,
 				redirects: ''
@@ -42,12 +29,10 @@
 
 			$http.jsonp(paramUrl)
 				.success(function (data) {
-					wiki.json = data.query;
-					var page = wiki.json.pages[0];
-
-					if (page.extract) {
+					var page = data.query.pages[0];
+					if (page.extract) {			// if there is content
 						wiki.page = page;
-						wiki.results = null;
+						wiki.results = null;	// hide other results
 					} else {
 						wiki.page = {};
 					}
@@ -55,12 +40,10 @@
 				.error(function () {
 					wiki.error = "Oh no, there was some error in geting data.";
 				});
-
 		}; // openArticle
 
 
 		wiki.searchWikipedia = function (term) {
-
 			var params = {
 				generator: 'search',
 				gsrsearch: term,
@@ -72,16 +55,15 @@
 
 			$http.jsonp(paramUrl)
 				.success(function (data) {
-					wiki.json = data.query;
-					wiki.results = data.query.pages;
-					wiki.page = null;
+					if(data.query) {
+						wiki.results = data.query.pages;
+						wiki.page = null;
+					}
 				})
 				.error(function () {
 					wiki.error = "Oh no, there was some error in geting data.";
 				});
-
 		}; // searchWikipedia
-
 
 
 		/*** HELPER FUNCTIONS ***/
@@ -104,6 +86,10 @@
 			}).join('&');
 			return paramString;
 		} // serialize
+
+		function capitalizeFirstLetter(string) {
+		    return string.charAt(0).toUpperCase() + string.slice(1);
+		}	// capitalizeFirstLetter
 
 	} // WikiController
 
