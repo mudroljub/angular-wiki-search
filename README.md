@@ -31,7 +31,7 @@ var params = {
     format: 'json',
     formatversion: 2,  // support utf-8
     callback: 'JSON_CALLBACK'
-};
+}
 ```
 
 Specific params for `openArticle` method are:
@@ -40,7 +40,7 @@ Specific params for `openArticle` method are:
 {
     titles: title,   // title is a variable
     redirects: ''  // auto-redirecting to an article
-};
+}
 ```
 
 Specific params for `searchWikipedia` method are:
@@ -52,7 +52,7 @@ Specific params for `searchWikipedia` method are:
     pilimit: 'max', // enable images for all results
     exlimit: 'max', // enable content for all results
     exintro: '',    // get only article's intro
-};
+}
 ```
 
 ## To-do list
