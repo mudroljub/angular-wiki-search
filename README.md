@@ -38,7 +38,7 @@ Specific params for `openArticle` method are:
 ```js
 var params = {
     prop: 'extracts|pageimages|pageterms',  // get page content, images and synonyms
-    redirects: '',  // auto-redirecting
+    redirects: '',  // auto-redirecting to article
     titles: title   // title is a variable
 };
 ```
