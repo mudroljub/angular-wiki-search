@@ -28,7 +28,7 @@ Params for searchWikipedia:
 ```
 var params = {
     action: 'query',
-    prop: 'extracts|pageimages|pageterms',  // getting page content, images and synonyms
+    prop: 'extracts|pageimages|pageterms',  // page content, images and synonyms
     redirects: '',  // automatically redirect
     titles: title   // search term
 };
