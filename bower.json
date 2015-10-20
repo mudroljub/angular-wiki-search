@@ -3,7 +3,7 @@
   "authors": [
     "mudroljub <mudroljub@gmail.com>"
   ],
-  "description": "AngularJS module for searching Wikipedia using MediaWiki API.",
+  "description": "AngularJS module for power searching Wikipedia using MediaWiki API.",
   "main": "app.js",
   "moduleType": [],
   "keywords": [
