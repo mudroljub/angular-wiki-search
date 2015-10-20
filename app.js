@@ -21,12 +21,11 @@
 		wiki.results = null;
 		wiki.error = "";
 		wiki.searchFilter = 'prefix:';	// prefix, intitle or empty
-		wiki.maxResult = 10;
 
 		wiki.searchParams = {
 			generator: 'search',
 			gsrsearch: wiki.searchFilter + wiki.searchTerm,
-			gsrlimit: wiki.maxResult, // broj rezultata, max 50
+			gsrlimit: 10, // broj rezultata, max 50
 			pilimit: 'max', // images for all articles, otherwise only for the first
 			exlimit: 'max', // extracts for all articles, otherwise only for the first
 			exintro: '' // only article's intro
