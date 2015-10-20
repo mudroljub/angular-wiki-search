@@ -3,7 +3,7 @@ AngularJS module for searching Wikipedia using MediaWiki API.
 
 [http://mudroljub.github.io/angular-wiki-search/](http://mudroljub.github.io/angular-wiki-search/)
 
-## Start aplication
+## Install aplication
 Just download a directory and open index.html file. You can also do it developer way:
 
 ```sh
