@@ -21,7 +21,7 @@ The main `WikiController` consists of two main public methods:
 - `wiki.openArticle(title)`
 - `wiki.searchWikipedia(term)`
 
-Those methods getting data from [Wikipedia API](http://en.wikipedia.org/w/api.php) in `JSONP` format (see not so clear [documentation](https://www.mediawiki.org/wiki/API:Main_page)).
+Those methods getting data from [Wikipedia API](http://en.wikipedia.org/w/api.php) in `JSONP` format (see [documentation](https://www.mediawiki.org/wiki/API:Main_page)).
 
 Params for `wiki.openArticle(title)` are:
 
