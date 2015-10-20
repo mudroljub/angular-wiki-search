@@ -23,7 +23,17 @@ The main `WikiController` consists of two main public methods:
 
 Those methods getting data from [Wikipedia API](http://en.wikipedia.org/w/api.php) in `JSONP` format (see [API documentation](https://www.mediawiki.org/wiki/API:Main_page)).
 
-Params for `wiki.openArticle(title)` are:
+Common params for both methods are:
+```js
+var params = {
+    action: 'query',
+    format: 'json',
+    formatversion: 2,  // enables utf8 by defaul
+    callback: 'JSON_CALLBACK'
+};
+```
+
+Specific params for `wiki.openArticle(title)` are:
 
 ```js
 var params = {
@@ -34,7 +44,7 @@ var params = {
 };
 ```
 
-Params for `wiki.searchWikipedia(term)` are:
+Specific params for `wiki.searchWikipedia(term)` are:
 
 ```js
 var params = {
@@ -46,14 +56,6 @@ var params = {
     pilimit: 'max', // images for all articles, otherwise only for the first
     exlimit: 'max' // extracts for all articles, otherwise only for the first
 };
-```
-
-Both methods also have common params:
-
-```js
-params.format = 'json';
-params.formatversion = 2;
-params.callback = 'JSON_CALLBACK';
 ```
 
 ## To-do list
