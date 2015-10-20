@@ -37,7 +37,7 @@ Specific params for `openArticle` method are:
 
 ```js
 var params = {
-    prop: 'extracts|pageimages|pageterms',  // get page content, images and synonyms
+    prop: 'extracts|pageimages|pageterms',  // get article content, images and synonyms
     redirects: '',  // auto-redirecting to article
     titles: title   // title is a variable
 };
@@ -49,8 +49,8 @@ Specific params for `searchWikipedia` method are:
 var params = {
     generator: 'search',
     gsrsearch: term,
-    prop: 'pageimages|extracts',
-    exintro: '',    // only article's intro
+    prop: 'pageimages|extracts',    // get article content and images
+    exintro: '',    // get only article's intro
     pilimit: 'max', // images for all articles, otherwise only for the first
     exlimit: 'max' // extracts for all articles, otherwise only for the first
 };
