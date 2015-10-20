@@ -23,7 +23,7 @@ The main `WikiController` consists of two main public methods:
 
 Those methods getting data from [Wikipedia API](http://en.wikipedia.org/w/api.php) in `JSONP` format (see [API documentation](https://www.mediawiki.org/wiki/API:Main_page)).
 
-Common params for both methods are:
+Both methods have those common params:
 ```js
 var params = {
     action: 'query',
@@ -37,7 +37,6 @@ Specific params for `wiki.openArticle(title)` are:
 
 ```js
 var params = {
-    action: 'query',
     prop: 'extracts|pageimages|pageterms',  // page content, images and synonyms
     redirects: '',  // automatically redirect
     titles: title   // search term
@@ -48,7 +47,6 @@ Specific params for `wiki.searchWikipedia(term)` are:
 
 ```js
 var params = {
-    action: 'query',
     generator: 'search',
     gsrsearch: term,
     prop: 'pageimages|extracts',
