@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang='en'>
-
 <head>
     <meta charset='UTF-8'>
     <title>AngularJS Wiki Module</title>
@@ -25,22 +24,22 @@
         <pre>{{wiki.json | json}}</pre>
         {{wiki.error}}
 
-        <article ng-show='wiki.page' class="clearfix">
-            <h1 class="text-info">{{wiki.page.title}}</h1>
-            <section ng-bind-html='wiki.page.extract'></section>
+        <section ng-show='wiki.page'>
+            <article class="wiki-article clearfix">
+                <h1 class="text-info">{{wiki.page.title}}</h1>
+                <section ng-bind-html='wiki.page.extract'></section>
+            </article>
             <p class="text-info pull-right"><a href="#">Read on Wikipedia >> </a></p>
-        </article>
+        </section>
 
         <article ng-repeat="page in wiki.results" class="clearfix">
-            <h3>{{page.title}}</h3>
+            <h3 ng-click="wiki.openArticle(page.title)" class="pointer">{{page.title}}</h3>
             <img ng-src="{{page.thumbnail.source}}" alt="{{page.title}}" class="img-thumbnail" ng-show="page.thumbnail.source">
             <section ng-bind-html='page.extract'></section>
             <p class="text-info pull-right"><a ng-href="https://en.wikipedia.org/wiki/{{page.title}}" target="_blank">Read on Wikipedia >> </a></p>
         </article>
 
-
     </main>
 
 </body>
-
 </html>

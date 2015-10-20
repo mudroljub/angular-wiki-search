@@ -4,6 +4,8 @@
 	// objediniti funkcije da se obe pozivaju iz jedne na svaku promenu
 	// ako ima jedan rezultat, prikazuje jedan, ako ima vise lista ih
 
+	// ubaciti back dugme i autofokus
+
 	/*
         svi parametri: https://www.mediawiki.org/w/api.php
         isprobavanje: https://en.wikipedia.org/wiki/Special:ApiSandbox
@@ -30,7 +32,7 @@
 
 		/*** PUBLIC METHODS ***/
 
-		wiki.loadPage = function (term) {
+		wiki.openArticle = function (term) {
 
 			var params = {
 				action: 'query',
@@ -55,7 +57,7 @@
 					wiki.error = "Oh no, there was some error in geting data.";
 				});
 
-		}; // loadPage
+		}; // openArticle
 
 
 		wiki.searchWikipedia = function(term){
@@ -65,7 +67,7 @@
 		        generator: 'search',
 		        gsrsearch: term,
 		        prop: 'pageimages|extracts',
-		        exintro: '',	// only article's intro 
+		        exintro: '',	// only article's intro
 				pilimit: 'max', // images for all articles, otherwise only for the first
 		        exlimit: 'max' // extracts for all articles, otherwise only for the first
 			};
