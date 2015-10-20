@@ -12,7 +12,7 @@ $ bower install
 $ open index.html
 ```
 
-If you don't use [Bower] ([http://bower.io/](http://bower.io/)), you can manually resolve dependencies from bower.json file.
+If you don't use [Bower](http://bower.io/)), you can manually resolve dependencies from bower.json file.
 
 Enjoy power searching Wikipedia!
 
@@ -21,7 +21,7 @@ The main WikiController consists of two main public methods:
 - `wiki.openArticle(title)`
 - `wiki.searchWikipedia(term)`
 
-Those methods getting data from [Wikipedia API] ([https://www.mediawiki.org/wiki/API:Main_page](https://www.mediawiki.org/wiki/API:Main_page)).
+Those methods getting data from [Wikipedia API](https://www.mediawiki.org/wiki/API:Main_page)).
 
 Params for `wiki.openArticle(title)` are:
 
