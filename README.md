@@ -1,7 +1,7 @@
 # Angular Wiki Search
 AngularJS module for searching Wikipedia using MediaWiki API.
 
-[http://mudroljub.github.io/angular-wiki-search/](http://mudroljub.github.io/angular-wiki-search/)
+See it in action: [http://mudroljub.github.io/angular-wiki-search/](http://mudroljub.github.io/angular-wiki-search/)
 
 ## Install aplication
 Just download a directory and open index.html file. You can also do it developer way:
@@ -28,7 +28,7 @@ Both methods have those common URL params:
 var params = {
     action: 'query',
     prop: 'extracts|pageimages',    // get article's content and images
-    format: 'json', 
+    format: 'json',
     formatversion: 2,  // support utf-8
     callback: 'JSON_CALLBACK'
 }
