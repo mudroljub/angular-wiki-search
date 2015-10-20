@@ -28,7 +28,7 @@ Both methods have those common URL params:
 var params = {
     action: 'query',
     prop: 'extracts|pageimages',    // get article's content and images
-    format: 'json',
+    format: 'json', 
     formatversion: 2,  // support utf-8
     callback: 'JSON_CALLBACK'
 }

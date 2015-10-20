@@ -24,7 +24,7 @@
 
 		var wiki = this;
 		wiki.term = 'Buddha';
-		wiki.json = {};	// samo u razvoju, posle obrisati
+		wiki.json = {}; // samo u razvoju, posle obrisati
 		wiki.page = null;
 		wiki.results = [];
 		wiki.error = "";
@@ -35,10 +35,8 @@
 		wiki.openArticle = function (title) {
 
 			var params = {
-				action: 'query',
-				prop: 'extracts|pageimages',
-				redirects: '',
-				titles: title
+				titles: title,
+				redirects: ''
 			};
 			var paramUrl = createParamUrl(params, title);
 
@@ -47,29 +45,27 @@
 					wiki.json = data.query;
 					var page = wiki.json.pages[0];
 
-					if(page.extract) {
+					if (page.extract) {
 						wiki.page = page;
 					} else {
 						wiki.page = {};
 					}
 				})
-				.error(function(){
+				.error(function () {
 					wiki.error = "Oh no, there was some error in geting data.";
 				});
 
 		}; // openArticle
 
 
-		wiki.searchWikipedia = function(term){
+		wiki.searchWikipedia = function (term) {
 
 			var params = {
-				action: 'query',
-		        generator: 'search',
-		        gsrsearch: term,
-		        prop: 'extracts|pageimages',
-		        exintro: '',	// only article's intro
+				generator: 'search',
+				gsrsearch: term,
 				pilimit: 'max', // images for all articles, otherwise only for the first
-		        exlimit: 'max' // extracts for all articles, otherwise only for the first
+				exlimit: 'max', // extracts for all articles, otherwise only for the first
+				exintro: '' // only article's intro
 			};
 			var paramUrl = createParamUrl(params, term);
 
@@ -78,11 +74,11 @@
 					wiki.json = data.query;
 					wiki.results = data.query.pages;
 				})
-				.error(function(){
+				.error(function () {
 					wiki.error = "Oh no, there was some error in geting data.";
 				});
 
-		};	// searchWikipedia
+		}; // searchWikipedia
 
 
 
@@ -91,6 +87,8 @@
 		function createParamUrl(params) {
 			var apiUrl = 'http://en.wikipedia.org/w/api.php';
 			// default params for all
+			params.action = 'query';
+			params.prop = 'extracts|pageimages';
 			params.format = 'json';
 			params.formatversion = 2;
 			params.callback = 'JSON_CALLBACK';
