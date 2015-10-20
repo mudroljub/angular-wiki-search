@@ -16,3 +16,15 @@ $ open index.html
 If you don't use Bower, you can manually resolve dependencies from bower.json file.
 
 **Enjoy power searching Wikipedia!**
+
+## Documentation
+
+The main WikiController consists of two main public methods:
+- wiki.searchWikipedia(term)
+- wiki.openArticle(title)
+Those methods communicate with the Wikipedia API.
+
+TODOS:
+
+- $http.jsonp error handling
+- maybe to separate services from controllers (but it is still to small)

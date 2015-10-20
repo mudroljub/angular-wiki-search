@@ -17,10 +17,10 @@
 	'use strict';
 	angular
 		.module("wikiModul", ['ngSanitize'])
-		.controller('WikiKontrol', WikiKontrol);
+		.controller('WikiController', WikiController);
 
 
-	function WikiKontrol($http) {
+	function WikiController($http) {
 
 		var wiki = this;
 		wiki.term = 'Buddha';
@@ -32,15 +32,15 @@
 
 		/*** PUBLIC METHODS ***/
 
-		wiki.openArticle = function (term) {
+		wiki.openArticle = function (title) {
 
 			var params = {
 				action: 'query',
 				prop: 'extracts|pageimages|pageterms',
 				redirects: '',
-				titles: term
+				titles: title
 			};
-			var paramUrl = createParamUrl(params, term);
+			var paramUrl = createParamUrl(params, title);
 
 			$http.jsonp(paramUrl)
 				.success(function (data) {
@@ -105,6 +105,6 @@
 			return paramString;
 		} // serialize
 
-	} // WikiKontrol
+	} // WikiController
 
 })();

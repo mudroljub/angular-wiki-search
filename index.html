@@ -16,7 +16,7 @@
         <h1>Angular Wikipedia Module</h1>
     </header>
 
-    <main ng-controller='WikiKontrol as wiki' ng-init='wiki.searchWikipedia(wiki.term)' class="container main" ng-cloak>
+    <main ng-controller='WikiController as wiki' ng-init='wiki.searchWikipedia(wiki.term)' class="container main" ng-cloak>
 
         Search Wikipedia:
         <input ng-model='wiki.term' ng-change='wiki.searchWikipedia(wiki.term)'>
