@@ -60,6 +60,7 @@
 			$http.jsonp(paramUrl)
 				.success(function (data) {
 					if(data.query) {
+						console.log(data.query);
 						wiki.results = data.query.pages;
 						wiki.page = null;
 					}
