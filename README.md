@@ -28,7 +28,7 @@ Both methods have those common params:
 var params = {
     action: 'query',
     format: 'json',
-    formatversion: 2,  // enables utf8 by defaul
+    formatversion: 2,  // support utf-8
     callback: 'JSON_CALLBACK'
 };
 ```
