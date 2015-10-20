@@ -23,10 +23,10 @@
 	function WikiController($http) {
 
 		var wiki = this;
-		wiki.term = 'Buddha';
+		wiki.term = 'happiness';	// default
 		wiki.json = {}; // samo u razvoju, posle obrisati
 		wiki.page = null;
-		wiki.results = [];
+		wiki.results = null;
 		wiki.error = "";
 
 
@@ -47,6 +47,7 @@
 
 					if (page.extract) {
 						wiki.page = page;
+						wiki.results = null;
 					} else {
 						wiki.page = {};
 					}
@@ -73,6 +74,7 @@
 				.success(function (data) {
 					wiki.json = data.query;
 					wiki.results = data.query.pages;
+					wiki.page = null;
 				})
 				.error(function () {
 					wiki.error = "Oh no, there was some error in geting data.";
