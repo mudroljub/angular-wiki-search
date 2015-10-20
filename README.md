@@ -27,6 +27,7 @@ Both methods have those common params:
 ```js
 var params = {
     action: 'query',
+    prop: 'extracts|pageimages',    // get article content and images
     format: 'json',
     formatversion: 2,  // support utf-8
     callback: 'JSON_CALLBACK'
@@ -37,9 +38,8 @@ Specific params for `openArticle` method are:
 
 ```js
 var params = {
-    prop: 'extracts|pageimages|pageterms',  // get article content, images and synonyms
-    redirects: '',  // auto-redirecting to an article
-    titles: title   // title is a variable
+    titles: title,   // title is a variable
+    redirects: ''  // auto-redirecting to an article
 };
 ```
 
@@ -49,7 +49,6 @@ Specific params for `searchWikipedia` method are:
 var params = {
     generator: 'search',
     gsrsearch: term,
-    prop: 'pageimages|extracts',    // get article content and images
     exintro: '',    // get only article's content intro
     pilimit: 'max', // images for all articles, otherwise only for the first
     exlimit: 'max' // extracts for all articles, otherwise only for the first

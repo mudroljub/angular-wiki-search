@@ -36,7 +36,7 @@
 
 			var params = {
 				action: 'query',
-				prop: 'extracts|pageimages|pageterms',
+				prop: 'extracts|pageimages',
 				redirects: '',
 				titles: title
 			};
@@ -66,7 +66,7 @@
 				action: 'query',
 		        generator: 'search',
 		        gsrsearch: term,
-		        prop: 'pageimages|extracts',
+		        prop: 'extracts|pageimages',
 		        exintro: '',	// only article's intro
 				pilimit: 'max', // images for all articles, otherwise only for the first
 		        exlimit: 'max' // extracts for all articles, otherwise only for the first
