@@ -3,7 +3,7 @@
   "authors": [
     "mudroljub <mudroljub@gmail.com>"
   ],
-  "description": "AngularJS module for consuming Wikipedia API",
+  "description": "AngularJS module for searching Wikipedia using MediaWiki API.",
   "main": "app.js",
   "moduleType": [],
   "keywords": [
@@ -16,7 +16,7 @@
     "mediawiki-api"
   ],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "http://mudroljub.github.io/angular-wiki-search/",
   "ignore": [
     "**/.*",
     "node_modules",
