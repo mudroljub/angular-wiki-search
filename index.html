@@ -28,6 +28,8 @@
                 Search for:
                 <input ng-model='wiki.searchTerm' ng-change='wiki.searchWikipedia(wiki.searchTerm)' class="form-control">
             </label>
+            <button type="button" class="btn btn-default" ng-click="wiki.openArticle(wiki.searchTerm)">Open</button>
+            <button type="button" class="btn btn-default" ng-click="wiki.searchWikipedia(wiki.searchTerm)">Search</button>
         </form>
 
         {{wiki.error}}
