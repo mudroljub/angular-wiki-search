@@ -25,7 +25,7 @@ Those methods getting data from [Wikipedia API] ([https://www.mediawiki.org/wiki
 
 Params for searchWikipedia:
 
-```
+```js
 var params = {
     action: 'query',
     prop: 'extracts|pageimages|pageterms',  // page content, images and synonyms
