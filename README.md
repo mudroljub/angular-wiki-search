@@ -17,7 +17,7 @@ If you don't use [Bower](http://bower.io/), you can manually resolve dependencie
 Enjoy power searching Wikipedia!
 
 ## Documentation
-The main WikiController consists of two main public methods:
+The main `WikiController` consists of two main public methods:
 - `wiki.openArticle(title)`
 - `wiki.searchWikipedia(term)`
 
