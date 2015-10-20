@@ -24,7 +24,7 @@ The main WikiController consists of two main public methods:
 - wiki.openArticle(title)
 Those methods communicate with the Wikipedia API.
 
-TODOS:
+To-do list:
 
 - $http.jsonp error handling
 - maybe to separate services from controllers (but it is still to small)
