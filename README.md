@@ -30,8 +30,7 @@ var params = {
     action: 'query',
     prop: 'extracts|pageimages|pageterms',  // page content, images and synonyms
     redirects: '',  // automatically redirect
-    titles: title,   // search term
-    format: 'json'
+    titles: title   // search term
 };
 ```
 
@@ -45,12 +44,17 @@ var params = {
     prop: 'pageimages|extracts',
     exintro: '',    // only article's intro
     pilimit: 'max', // images for all articles, otherwise only for the first
-    exlimit: 'max', // extracts for all articles, otherwise only for the first
-    format: 'json'
+    exlimit: 'max' // extracts for all articles, otherwise only for the first
 };
 ```
 
-Be aware that this params could be changed in code.
+Both methods have common params:
+
+```js
+params.format = 'json';
+params.formatversion = 2;
+params.callback = 'JSON_CALLBACK';
+```
 
 ## To-do list
 - $http.jsonp error handling
