@@ -50,7 +50,7 @@ var params = {
     generator: 'search',
     gsrsearch: term,
     prop: 'pageimages|extracts',    // get article content and images
-    exintro: '',    // get only article's intro
+    exintro: '',    // get only article's content intro
     pilimit: 'max', // images for all articles, otherwise only for the first
     exlimit: 'max' // extracts for all articles, otherwise only for the first
 };
