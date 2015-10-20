@@ -11,7 +11,7 @@
 	function WikiController($http) {
 
 		var wiki = this;
-		wiki.searchTerm = 'happiness';	// default
+		wiki.searchTerm = 'enlightenment';	// default
 		wiki.page = null;
 		wiki.results = null;
 		wiki.error = "";
@@ -87,9 +87,6 @@
 			return paramString;
 		} // serialize
 
-		function capitalizeFirstLetter(string) {
-		    return string.charAt(0).toUpperCase() + string.slice(1);
-		}	// capitalizeFirstLetter
 
 	} // WikiController
 
