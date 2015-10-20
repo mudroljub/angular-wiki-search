@@ -2,6 +2,10 @@
   display: none !important;
 }
 
+.wiki-logo {
+    height: 2em;
+}
+
 .main {
     margin-bottom: 40px;
 }
