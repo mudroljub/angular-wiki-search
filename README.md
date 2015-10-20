@@ -25,7 +25,7 @@ The main WikiController consists of two main public methods:
 
 Those methods communicates with the Wikipedia API.
 
-## To-do list:
+## To-do list
 
 - $http.jsonp error handling
 - maybe to separate services from controllers (but it is still to small)
