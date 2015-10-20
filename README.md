@@ -23,7 +23,7 @@ The main WikiController consists of two main public methods:
 - `wiki.searchWikipedia(term)`
 - `wiki.openArticle(title)`
 
-Those methods communicates with the Wikipedia API.
+Those methods getting data from [Wikipedia API] (https://www.mediawiki.org/wiki/API:Main_page).
 
 ## To-do list
 
