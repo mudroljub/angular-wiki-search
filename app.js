@@ -1,9 +1,11 @@
 (function () {
 
+	// napraviti interfejs za opcije pretrage, mozda treba servis
 	// ubaciti back dugme i autofokus
 	// vise rezultata
 	// istovetni rezultat staviti uvek na pocetak (vidi npr form)
 	// isprobati ostale wiki projekte
+	// ubaciti pun paramUrl u dokumentaciju
 
 	'use strict';
 	angular
@@ -14,11 +16,21 @@
 	function WikiController($http) {
 
 		var wiki = this;
-		wiki.searchTerm = 'enlightenment';	// default
+		wiki.searchTerm = 'form';	// default
 		wiki.page = null;
 		wiki.results = null;
 		wiki.error = "";
+		wiki.searchFilter = 'prefix:';	// prefix, intitle or empty
+		wiki.maxResult = 10;
 
+		wiki.searchParams = {
+			generator: 'search',
+			gsrsearch: wiki.searchFilter + wiki.searchTerm,
+			gsrlimit: wiki.maxResult, // broj rezultata, max 50
+			pilimit: 'max', // images for all articles, otherwise only for the first
+			exlimit: 'max', // extracts for all articles, otherwise only for the first
+			exintro: '' // only article's intro
+		};
 
 		/*** PUBLIC METHODS ***/
 
@@ -47,20 +59,13 @@
 
 
 		wiki.searchWikipedia = function (term) {
-			var params = {
-				generator: 'search',
-				gsrsearch: term,
-				// srlimit: 30, // broj rezultata, max 50
-				pilimit: 'max', // images for all articles, otherwise only for the first
-				exlimit: 'max', // extracts for all articles, otherwise only for the first
-				exintro: '' // only article's intro
-			};
-			var paramUrl = createParamUrl(params, term);
+			wiki.searchParams.gsrsearch = wiki.searchFilter + term;
+			var paramUrl = createParamUrl(wiki.searchParams, term);
 
 			$http.jsonp(paramUrl)
 				.success(function (data) {
 					if(data.query) {
-						console.log(data.query);
+						//console.log(data.query);
 						wiki.results = data.query.pages;
 						wiki.page = null;
 					}
@@ -69,6 +74,7 @@
 					wiki.error = "Oh no, there was some error in geting data.";
 				});
 		}; // searchWikipedia
+
 
 
 		/*** HELPER FUNCTIONS ***/
@@ -82,6 +88,7 @@
 			params.formatversion = 2;
 			params.callback = 'JSON_CALLBACK';
 			var paramUrl = apiUrl + '?' + serialize(params);
+			console.log(paramUrl);
 			return paramUrl;
 		} // createParamUrl
 
