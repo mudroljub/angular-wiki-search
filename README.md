@@ -23,7 +23,7 @@ The main WikiController consists of two main public methods:
 
 Those methods getting data from [Wikipedia API] ([https://www.mediawiki.org/wiki/API:Main_page](https://www.mediawiki.org/wiki/API:Main_page)).
 
-Params for searchWikipedia:
+Params for 'wiki.searchWikipedia()' are:
 
 ```js
 var params = {
