@@ -48,7 +48,7 @@
 		wiki.searchWikipedia = function (term) {
 			var params = {
 				generator: 'search',
-				gsrsearch: term,
+				gsrsearch: 'intitle:'+term,
 				// srlimit: 30, // broj rezultata, max 50
 				pilimit: 'max', // images for all articles, otherwise only for the first
 				exlimit: 'max', // extracts for all articles, otherwise only for the first
