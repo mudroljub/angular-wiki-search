@@ -1,10 +1,9 @@
 (function() {
 
-    // kad nema rezultata da obrise prethodne
+    // glavni rezultat uvek na pocetak
+    // kad nema rezultata obrisi prethodne
     // ubaciti back dugme i autofokus
-    // vise rezultata
-    // istovetni rezultat staviti uvek na pocetak (vidi npr form)
-    // isprobati ostale wiki projekte
+    // ubaciti ostale wiki projekte
     // ubaciti pun paramUrl u dokumentaciju
 
     'use strict';

@@ -14,12 +14,6 @@
 </head>
 
 <body ng-app='wikiModul'>
-    <!--
-        https://upload.wikimedia.org/wikipedia/commons/8/80/Wikipedia-logo-v2.svg
-        https://upload.wikimedia.org/wikipedia/commons/2/2c/Feminist-wikipedia-logo.jpg
-        https://upload.wikimedia.org/wikipedia/commons/b/b5/Wikipedia_Checkuser.svg
-        https://upload.wikimedia.org/wikipedia/commons/9/93/Color-chars-logo.png
-    -->
     <header class="container">
         <h1>
             <img src="logo.png" alt="wikipedia-logo" class="wiki-logo pull-right"> Wikipedia power search
@@ -35,7 +29,6 @@
                 <input ng-model='wiki.term' ng-change='wiki.searchWikipedia(wiki.term, wiki.params)' class="form-control">
             </label>
 
-
             <label class="radio-inline">
                 <input type="radio" ng-model="wiki.searchFilter" value="prefix:" ng-change='wiki.searchWikipedia(wiki.term, wiki.params)'> start with
             </label>
@@ -46,8 +39,7 @@
                 <input type="radio" ng-model="wiki.searchFilter" value="" ng-change='wiki.searchWikipedia(wiki.term, wiki.params)'> in content
             </label>
 
-
-            <label>Results:
+            <label>Max results:
                 <input type="number" min="1" max="50" ng-model='wiki.params.gsrlimit' ng-change='wiki.searchWikipedia(wiki.term, wiki.params)' class="form-control">
             </label>
         </form>
