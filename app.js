@@ -16,14 +16,14 @@
 
         var wiki = this;
         wiki.term = 'form'; // default
+        wiki.searchFilter = "intitle:";
         wiki.page = null;
         wiki.results = null;
         wiki.error = "";
-        wiki.searchFilter = "intitle:";
 
         wiki.params = {
             generator: 'search',
-            gsrsearch: '',
+            gsrsearch: wiki.term + wiki.searchFilter,
             gsrlimit: 10, // broj rezultata, max 50
             pilimit: 'max', // images for all articles, otherwise only for the first
             exlimit: 'max', // extracts for all articles, otherwise only for the first
