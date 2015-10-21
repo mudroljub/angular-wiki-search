@@ -22,7 +22,7 @@
         wiki.error = "";
         wiki.searchFilter = "";
 
-        wiki.searchParams = {
+        wiki.params = {
             generator: 'search',
             gsrsearch: '',
             gsrlimit: 10, // broj rezultata, max 50
@@ -57,9 +57,9 @@
         }; // openArticle
 
 
-        wiki.searchWikipedia = function(term, searchParams) {
+        wiki.searchWikipedia = function(term, params) {
             updateSearchTerm();
-            var paramUrl = createParamUrl(searchParams, term);
+            var paramUrl = createParamUrl(params, term);
             $http.jsonp(paramUrl)
                 .success(function(data) {
                     if (data.query) {
@@ -75,7 +75,7 @@
         /*** HELPER FUNCTIONS ***/
 
 				function updateSearchTerm() {
-            wiki.searchParams.gsrsearch = wiki.searchFilter + wiki.term;
+            wiki.params.gsrsearch = wiki.searchFilter + wiki.term;
         }	// updateSearchTerm
 
         function handleErrors() {
