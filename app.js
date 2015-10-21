@@ -16,24 +16,27 @@
     function WikiController($http) {
 
         var wiki = this;
-        wiki.searchTerm = 'form'; // default
+        wiki.term = 'form'; // default
         wiki.page = null;
         wiki.results = null;
         wiki.error = "";
+        wiki.searchFilter = "";
 
         wiki.searchParams = {
             generator: 'search',
-            gsrsearch: 'form',
+            gsrsearch: '',
             gsrlimit: 10, // broj rezultata, max 50
             pilimit: 'max', // images for all articles, otherwise only for the first
             exlimit: 'max', // extracts for all articles, otherwise only for the first
             exintro: '' // extracts intro
         };
 
+
         /*** PUBLIC METHODS ***/
 
+
         wiki.openArticle = function(title) {
-            wiki.searchTerm = title; // update search term
+            wiki.term = title; // update search term
             var params = {
                 titles: title,
                 redirects: ''
@@ -54,8 +57,9 @@
         }; // openArticle
 
 
-        wiki.searchWikipedia = function(term) {
-            var paramUrl = createParamUrl(wiki.searchParams, term);
+        wiki.searchWikipedia = function(term, searchParams) {
+            updateSearchTerm();
+            var paramUrl = createParamUrl(searchParams, term);
             $http.jsonp(paramUrl)
                 .success(function(data) {
                     if (data.query) {
@@ -69,6 +73,10 @@
 
 
         /*** HELPER FUNCTIONS ***/
+
+				function updateSearchTerm() {
+            wiki.searchParams.gsrsearch = wiki.searchFilter + wiki.term;
+        }	// updateSearchTerm
 
         function handleErrors() {
             wiki.error = "Oh no, there was some error in geting data.";

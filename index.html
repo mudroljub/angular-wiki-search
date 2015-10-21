@@ -26,33 +26,39 @@
         </h1>
     </header>
 
-    <main ng-controller='WikiController as wiki' ng-init='wiki.searchWikipedia(wiki.searchTerm)' class="container main" ng-cloak>
+    <main ng-controller='WikiController as wiki' ng-init='wiki.searchWikipedia(wiki.term, wiki.searchParams)' class="container main" ng-cloak>
 
         <form class="form-inline">
+
             <label>
                 Search for:
-                <input ng-model='wiki.searchTerm' ng-change='wiki.searchWikipedia(wiki.searchTerm)' class="form-control">
+                <input ng-model='wiki.term' ng-change='wiki.searchWikipedia(wiki.term, wiki.searchParams)' class="form-control">
             </label>
-            <label>
-                Search in:
-                <!-- https://docs.angularjs.org/api/ng/directive/ngOptions -->
-                <select class="form-control" name="">
-                    <option value="prefix">prefix</option>
-                    <option value="intitle">titles</option>
-                    <option value="">content</option>
-                </select>
+
+
+            <label class="radio-inline">
+                <input type="radio" ng-model="wiki.searchFilter" value="prefix:" ng-change="wiki.updateterm()">prefix
             </label>
+            <label class="radio-inline">
+                <input type="radio" ng-model="wiki.searchFilter" value="intitle:" ng-change="wiki.updateterm()"> in title
+            </label>
+            <label class="radio-inline">
+                <input type="radio" ng-model="wiki.searchFilter" value="" ng-change="wiki.updateterm()">content
+            </label>
+
+
             <label>Max results:
-                <input type="number" min="1" max="50" ng-model='wiki.searchParams.gsrlimit' ng-change='wiki.searchWikipedia(wiki.searchTerm)' class="form-control">
+                <input type="number" min="1" max="50" ng-model='wiki.searchParams.gsrlimit' ng-change='wiki.searchWikipedia(wiki.term, wiki.searchParams)' class="form-control">
             </label>
         </form>
 
+        {{wiki.searchFilter}} {{wiki.term}}
         {{wiki.error}}
 
         <section ng-show='wiki.page'>
             <article class="wiki-article clearfix">
                 <h1 class="text-info">
-                    <span class="pointer" title="Search for this term" ng-click="wiki.searchWikipedia(wiki.page.title)">{{wiki.page.title}}</span>
+                    <span class="pointer" title="Search for this term" ng-click="wiki.searchWikipedia(wiki.page.title, wiki.searchParams)">{{wiki.page.title}}</span>
                 </h1>
                 <img ng-src="{{wiki.page.thumbnail.source}}" alt="{{wiki.page.title}}" class="img-thumbnail" ng-show="wiki.page.thumbnail.source">
                 <section ng-bind-html='wiki.page.extract'></section>
