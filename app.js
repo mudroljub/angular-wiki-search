@@ -1,6 +1,6 @@
 (function() {
 
-    // napraviti interfejs za opcije pretrage, mozda treba servis
+    // kad nema rezultata da obrise prethodne
     // ubaciti back dugme i autofokus
     // vise rezultata
     // istovetni rezultat staviti uvek na pocetak (vidi npr form)
@@ -20,7 +20,7 @@
         wiki.page = null;
         wiki.results = null;
         wiki.error = "";
-        wiki.searchFilter = "";
+        wiki.searchFilter = "intitle:";
 
         wiki.params = {
             generator: 'search',
