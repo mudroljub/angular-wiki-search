@@ -1,12 +1,13 @@
 (function () {
 
-	// kad nema rezultata obrisi prethodne i ostavi poruku
+	// kad kliknem na neki clanak otvara ga preko cele strane, i pojavljuje se back dugme
+
+	// kad nema više rezultata obrisi prethodne
+	// ako nema ni clanaka ni glavnog clanka, napisati nema rezultata
+	// ako ima samo glavni, nema ostalih, rasiriti ga
 	// ubaciti back dugme i autofokus
 	// ubaciti ostale wiki projekte
 	// ubaciti paramUrl u dokumentaciju
-
-	// ako nema ni clanaka ni glavnog clanka, napisati nema rezultata
-	// ako ima samo glavni, nema ostalih, rasiriti ga
 
 	'use strict';
 	angular
@@ -17,7 +18,7 @@
 	function WikiController($http) {
 
 		var wiki = this;
-		wiki.term = 'buddha'; // default
+		wiki.term = 'zen'; // default
 		wiki.searchFilter = "intitle:";
 		wiki.apiUrl = 'http://en.wikipedia.org/w/api.php';
 		wiki.page = null;
@@ -67,7 +68,11 @@
 
 			$http.jsonp(paramUrl)
 				.success(function (data) {
-					if (!data.query) return;
+					if (!data.query) {
+						wiki.results = [];
+						wiki.page = "";
+						return;
+					}
 					wiki.results = data.query.pages;
 					wiki.openArticle(term);
 				})
