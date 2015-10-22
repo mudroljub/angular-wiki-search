@@ -16,13 +16,12 @@
 <body ng-app='wikiModul' ng-controller='WikiController as wiki' ng-init='wiki.searchWikipedia(wiki.term, wiki.params)' >
 
     <header>
-        <img src="logo.png" alt="wikipedia-logo" class="wiki-logo">
         <section class="container">
             <form class="search-form row" role="form">
 
                 <div class="col-md-6">
                     <div class="form-group">
-                        <button class="btn btn-success pull-right input-lg" type="submit">
+                        <button class="btn btn-success search-button input-lg" type="submit">
                             <span class="glyphicon glyphicon-search"></span>
                         </button>
                         <input ng-model='wiki.term' ng-change='wiki.searchWikipedia(wiki.term, wiki.params)' class="form-control input-lg">

@@ -18,6 +18,11 @@ header {
     position: absolute;
 }
 
+.search-button {
+    position:absolute;
+    right:0;
+}
+
 .main {
     margin-bottom: 40px;
 }
