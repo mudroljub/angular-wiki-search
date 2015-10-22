@@ -1,19 +1,35 @@
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-  display: none !important;
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+    display: none !important;
 }
 
 .wiki-logo {
     height: 2em;
 }
 
+.search-button {
+    float: right;
+}
+
 .main {
     margin-bottom: 40px;
 }
 
+.wiki-article-wrapper {
+    width: 50%;
+    float: right;
+    border: 1px solid rgb(235, 235, 235);
+}
+
 .wiki-article {
-    max-height: 600px;
+    max-height: 900px;
     overflow-y: scroll;
     margin-bottom: 20px;
+    padding: 0 20px;
 }
 
 .pointer {
