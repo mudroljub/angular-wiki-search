@@ -35,7 +35,7 @@
 
 
 		wiki.openArticle = function (title) {
-			wiki.term = title; // update search term
+			// wiki.term = title; // update search term
 			var params = {
 				titles: title,
 				redirects: ''
@@ -47,9 +47,6 @@
 					var page = data.query.pages[0];
 					if (page.extract) { // if there is content
 						wiki.page = page;
-						// wiki.results = null; // hide other results
-					} else {
-						// wiki.page = {};
 					}
 				})
 				.error(handleErrors);
@@ -59,11 +56,11 @@
 		wiki.searchWikipedia = function (term, params) {
 			updateSearchTerm();
 			var paramUrl = createParamUrl(params, term);
+
 			$http.jsonp(paramUrl)
 				.success(function (data) {
 					if (data.query) {
-						wiki.results = data.query.pages;
-						// wiki.page = null;
+						wiki.results = highlightExactMatch(term, data.query.pages);
 					}
 				})
 				.error(handleErrors);
@@ -71,7 +68,18 @@
 
 
 
-		/*** HELPER FUNCTIONS ***/
+		/*** PRIVATE HELPER FUNCTIONS ***/
+
+		// open exact article, and remove it from the results
+		function highlightExactMatch(term, pages) {
+			for(var x in pages) {
+				if (pages[x].title == capitalizeFirst(term)) {
+					wiki.openArticle(term);
+					pages.splice(x, 1);
+				}
+			}
+			return pages;
+		}	// highlightExactMatch
 
 		function updateSearchTerm() {
 			wiki.params.gsrsearch = wiki.searchFilter + wiki.term;
@@ -101,6 +109,9 @@
 			return paramString;
 		} // serialize
 
+		function capitalizeFirst(string) {
+		    return string.charAt(0).toUpperCase() + string.slice(1);
+		}	// capitalizeFirst
 
 	} // WikiController
 
