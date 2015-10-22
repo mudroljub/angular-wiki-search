@@ -24,7 +24,7 @@
 
         <form class="row" role="form">
 
-            <div class="col-sm-6">
+            <div class="col-md-6">
                 <div class="form-group">
                     <button class="btn btn-success search-button input-lg" type="submit">
                         <span class="glyphicon glyphicon-search"></span>
@@ -32,23 +32,22 @@
                     <input ng-model='wiki.term' ng-change='wiki.searchWikipedia(wiki.term, wiki.params)' class="form-control input-lg">
                 </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label class="radio-inline">
                         <input type="radio" ng-model="wiki.searchFilter" value="prefix:" ng-change='wiki.searchWikipedia(wiki.term, wiki.params)'> start with
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" ng-model="wiki.searchFilter" value="intitle:" ng-change='wiki.searchWikipedia(wiki.term, wiki.params)'> in title
+                        <input type="radio" ng-model="wiki.searchFilter" value="intitle:" ng-change='wiki.searchWikipedia(wiki.term, wiki.params)'> titles
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" ng-model="wiki.searchFilter" value="" ng-change='wiki.searchWikipedia(wiki.term, wiki.params)'> in content
+                        <input type="radio" ng-model="wiki.searchFilter" value="" ng-change='wiki.searchWikipedia(wiki.term, wiki.params)'> content
                     </label>
                 </div>
             </div>
-            <div class="col-sm-2">
-                <div class="form-group form-inline">
-                    <small>show:</small>
-                    <input type="number" min="1" max="50" ng-model='wiki.params.gsrlimit' ng-change='wiki.searchWikipedia(wiki.term, wiki.params)' class="form-control input-sm">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <input type="number" min="1" max="50" ng-model='wiki.params.gsrlimit' ng-change='wiki.searchWikipedia(wiki.term, wiki.params)' class="form-control">
                 </div>
             </div>
 
