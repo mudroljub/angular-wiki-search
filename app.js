@@ -1,11 +1,9 @@
 (function () {
 
-	// glavni rezultat uvek na pocetak
-	// kad nema rezultata obrisi prethodne
+	// kad nema rezultata obrisi prethodne i ostavi poruku
 	// ubaciti back dugme i autofokus
 	// ubaciti ostale wiki projekte
-	// ubaciti pun paramUrl u dokumentaciju
-	// koristiti angular.extend(dst, src); za createParamUrl
+	// ubaciti paramUrl u dokumentaciju
 
 	'use strict';
 	angular
@@ -16,13 +14,14 @@
 	function WikiController($http) {
 
 		var wiki = this;
-		wiki.term = 'form'; // default
+		wiki.term = 'enlightenment'; // default
 		wiki.searchFilter = "intitle:";
+		wiki.apiUrl = 'http://en.wikipedia.org/w/api.php';
 		wiki.page = null;
 		wiki.results = null;
 		wiki.error = "";
 
-		// private params for open and search
+		// common static params for open and search
 		var commonParams = {
 			action: 'query',
 			prop: 'extracts|pageimages',
@@ -44,10 +43,9 @@
 
 		/*** PUBLIC METHODS ***/
 
-
 		wiki.openArticle = function (title) {
 			// wiki.term = title; // update search term
-			var paramUrl = createParamUrl({titles: title});
+			var paramUrl = createParamUrl({titles: title}, commonParams);
 
 			$http.jsonp(paramUrl)
 				.success(function (data) {
@@ -62,7 +60,7 @@
 
 		wiki.searchWikipedia = function (term, params) {
 			updateSearchTerm();
-			var paramUrl = createParamUrl(params);
+			var paramUrl = createParamUrl(params, commonParams);
 
 			$http.jsonp(paramUrl)
 				.success(function (data) {
@@ -82,6 +80,8 @@
 				if (pages[x].title == capitalizeFirst(term)) {
 					wiki.openArticle(term);
 					pages.splice(x, 1); // remove it from the list
+				} else {
+					wiki.page = '';
 				}
 			}
 			return pages;
@@ -95,10 +95,9 @@
 			wiki.error = "Oh no, there was some error in geting data.";
 		} // handleErrors
 
-		function createParamUrl(params) {
-			var apiUrl = 'http://en.wikipedia.org/w/api.php';
+		function createParamUrl(params, commonParams) {
 			angular.extend(params, commonParams);
-			var paramUrl = apiUrl + '?' + serialize(params);
+			var paramUrl = wiki.apiUrl + '?' + serialize(params);
 			console.log(paramUrl);
 			return paramUrl;
 		} // createParamUrl

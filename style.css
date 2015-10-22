@@ -7,12 +7,15 @@
     display: none !important;
 }
 
-.wiki-logo {
-    height: 2em;
+header {
+    background: #F1F1F1;
+    padding: 10px 20px;
+    margin-bottom: 20px;
 }
 
-.search-form  {
-    margin-bottom: 20px;
+.wiki-logo {
+    height: 50px;
+    position: absolute;
 }
 
 .main {
@@ -21,6 +24,7 @@
 
 .choosen-article-wrapper {
     border: 1px solid rgb(235, 235, 235);
+    border-radius: 4px;
 }
 
 .articles,
