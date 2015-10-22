@@ -22,11 +22,11 @@
 
     <main ng-controller='WikiController as wiki' ng-init='wiki.searchWikipedia(wiki.term, wiki.params)' class="container main" ng-cloak>
 
-        <form class="row" role="form">
+        <form class="search-form row" role="form">
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <button class="btn btn-success search-button input-lg" type="submit">
+                    <button class="btn btn-success pull-right input-lg" type="submit">
                         <span class="glyphicon glyphicon-search"></span>
                     </button>
                     <input ng-model='wiki.term' ng-change='wiki.searchWikipedia(wiki.term, wiki.params)' class="form-control input-lg">
@@ -35,13 +35,13 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="radio-inline">
-                        <input type="radio" ng-model="wiki.searchFilter" value="prefix:" ng-change='wiki.searchWikipedia(wiki.term, wiki.params)'> start with
-                    </label>
-                    <label class="radio-inline">
                         <input type="radio" ng-model="wiki.searchFilter" value="intitle:" ng-change='wiki.searchWikipedia(wiki.term, wiki.params)'> titles
                     </label>
                     <label class="radio-inline">
                         <input type="radio" ng-model="wiki.searchFilter" value="" ng-change='wiki.searchWikipedia(wiki.term, wiki.params)'> content
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" ng-model="wiki.searchFilter" value="prefix:" ng-change='wiki.searchWikipedia(wiki.term, wiki.params)'> start with
                     </label>
                 </div>
             </div>
@@ -50,30 +50,35 @@
                     <input type="number" min="1" max="50" ng-model='wiki.params.gsrlimit' ng-change='wiki.searchWikipedia(wiki.term, wiki.params)' class="form-control">
                 </div>
             </div>
-
         </form>
 
         {{wiki.error}}
 
-        <section class='wiki-article-wrapper' ng-show='wiki.page'>
-            <article class="wiki-article clearfix">
-                <h1 class="text-info">
-                    <span class="pointer" title="Search for this term" ng-click="wiki.searchWikipedia(wiki.page.title, wiki.params)">{{wiki.page.title}}</span>
-                </h1>
-                <img ng-src="{{wiki.page.thumbnail.source}}" alt="{{wiki.page.title}}" class="img-thumbnail" ng-show="wiki.page.thumbnail.source">
-                <section ng-bind-html='wiki.page.extract'></section>
-            </article>
-            <p class="text-info pull-right"><a href="#">Read on Wikipedia >> </a></p>
-        </section>
+        <div class="row">
+            <div class="col-md-6">
+                <article ng-repeat="page in wiki.results" class="articles clearfix">
+                    <h2 class="text-info">
+                        <span class="pointer" title="Open this article" ng-click="wiki.openArticle(page.title)">{{page.title}}</span>
+                    </h2>
+                    <img ng-src="{{page.thumbnail.source}}" alt="{{page.title}}" class="img-thumbnail" ng-show="page.thumbnail.source">
+                    <section ng-bind-html='page.extract'></section>
+                    <p class="read-more text-info pull-right"><a ng-href="https://en.wikipedia.org/wiki/{{page.title}}" target="_blank">Read on Wikipedia >> </a></p>
+                </article>
+            </div>
 
-        <article ng-repeat="page in wiki.results" class="clearfix">
-            <h2 class="text-info">
-                <span class="pointer" title="Open this article" ng-click="wiki.openArticle(page.title)">{{page.title}}</span>
-            </h2>
-            <img ng-src="{{page.thumbnail.source}}" alt="{{page.title}}" class="img-thumbnail" ng-show="page.thumbnail.source">
-            <section ng-bind-html='page.extract'></section>
-            <p class="text-info pull-right"><a ng-href="https://en.wikipedia.org/wiki/{{page.title}}" target="_blank">Read on Wikipedia >> </a></p>
-        </article>
+            <div class="col-md-6">
+                <section class='choosen-article-wrapper' ng-show='wiki.page'>
+                    <article class="choosen-article clearfix">
+                        <h1 class="text-info">
+                            <span class="pointer" title="Search for this term" ng-click="wiki.searchWikipedia(wiki.page.title, wiki.params)">{{wiki.page.title}}</span>
+                        </h1>
+                        <img ng-src="{{wiki.page.thumbnail.source}}" alt="{{wiki.page.title}}" class="img-thumbnail" ng-show="wiki.page.thumbnail.source">
+                        <section ng-bind-html='wiki.page.extract'></section>
+                    </article>
+                    <p class="read-more text-info pull-right"><a href="#">Read on Wikipedia >> </a></p>
+                </section>
+            </div>
+        </div>
 
     </main>
 

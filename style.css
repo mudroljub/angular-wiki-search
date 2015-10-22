@@ -11,25 +11,30 @@
     height: 2em;
 }
 
-.search-button {
-    float: right;
+.search-form  {
+    margin-bottom: 20px;
 }
 
 .main {
     margin-bottom: 40px;
 }
 
-.wiki-article-wrapper {
-    width: 50%;
-    float: right;
+.choosen-article-wrapper {
     border: 1px solid rgb(235, 235, 235);
 }
 
-.wiki-article {
+.articles,
+.choosen-article  {
+    padding: 0 20px;
+}
+
+.choosen-article {
     max-height: 900px;
     overflow-y: scroll;
-    margin-bottom: 20px;
-    padding: 0 20px;
+}
+
+.read-more {
+    margin-right: 30px;
 }
 
 .pointer {
