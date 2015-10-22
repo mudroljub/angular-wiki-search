@@ -1,10 +1,7 @@
 (function () {
 
 	// kad kliknem na neki clanak otvara ga preko cele strane, i pojavljuje se back dugme
-
-	// kad nema više rezultata obrisi prethodne
-	// ako nema ni clanaka ni glavnog clanka, napisati nema rezultata
-	// ako ima samo glavni, nema ostalih, rasiriti ga
+	// ako ima samo glavni rezultat, nema ostalih, mozda rasiriti ga (npr pariguz)
 	// ubaciti back dugme i autofokus
 	// ubaciti ostale wiki projekte
 	// ubaciti paramUrl u dokumentaciju
