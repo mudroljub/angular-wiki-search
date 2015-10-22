@@ -5,6 +5,9 @@
 	// ubaciti ostale wiki projekte
 	// ubaciti paramUrl u dokumentaciju
 
+	// ako nema ni clanaka ni glavnog clanka, napisati nema rezultata
+	// ako ima samo glavni, nema ostalih, rasiriti ga
+
 	'use strict';
 	angular
 		.module("wikiModul", ['ngSanitize'])
@@ -14,7 +17,7 @@
 	function WikiController($http) {
 
 		var wiki = this;
-		wiki.term = 'enlightenment'; // default
+		wiki.term = 'buddha'; // default
 		wiki.searchFilter = "intitle:";
 		wiki.apiUrl = 'http://en.wikipedia.org/w/api.php';
 		wiki.page = null;
@@ -49,10 +52,10 @@
 
 			$http.jsonp(paramUrl)
 				.success(function (data) {
+					if (!data.query) return;
 					var page = data.query.pages[0];
-					if (page.extract) { // if there is content
-						wiki.page = page;
-					}
+					wiki.page = page;
+					wiki.results = removeDupes(title, wiki.results, data.query.redirects);
 				})
 				.error(handleErrors);
 		}; // openArticle
@@ -64,28 +67,29 @@
 
 			$http.jsonp(paramUrl)
 				.success(function (data) {
-					if (data.query) {
-						wiki.results = openExactMatch(term, data.query.pages);
-					}
+					if (!data.query) return;
+					wiki.results = data.query.pages;
+					wiki.openArticle(term);
 				})
 				.error(handleErrors);
 		}; // searchWikipedia
 
 
-
 		/*** PRIVATE HELPER FUNCTIONS ***/
 
-		function openExactMatch(term, pages) {
-			for (var x in pages) {
-				if (pages[x].title == capitalizeFirst(term)) {
-					wiki.openArticle(term);
-					pages.splice(x, 1); // remove it from the list
-				} else {
-					wiki.page = '';
+		function removeDupes(term, results, redirects){
+			for(var x in results) {
+				if (results[x].title == capitalizeFirst(term)) {
+					results.splice(x, 1); // remove it from the list
 				}
-			}
-			return pages;
-		} // openExactMatch
+				for(var r in redirects) {
+					if(redirects[r].to == results[x].title) {
+						results.splice(x, 1);
+					}
+				}
+			}	// end for
+			return results;
+		}	// removeDupes
 
 		function updateSearchTerm() {
 			wiki.params.gsrsearch = wiki.searchFilter + wiki.term;
