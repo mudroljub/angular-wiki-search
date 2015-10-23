@@ -7,6 +7,10 @@
     display: none !important;
 }
 
+* {
+    transition: all 0.3s ease-out;
+}
+
 header {
     background: #F1F1F1;
     padding: 10px 20px;
@@ -37,7 +41,7 @@ header {
     padding: 0 20px;
 }
 
-.choosen-article {
+.col-md-6 .choosen-article {
     max-height: 1200px;
     overflow-y: scroll;
 }

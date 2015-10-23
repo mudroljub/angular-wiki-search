@@ -58,3 +58,6 @@ Specific params for `searchWikipedia` method are:
 ## To-do list
 - error handling
 - maybe $http.jsonp to separate services
+
+## Licence
+MIT
