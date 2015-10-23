@@ -1,18 +1,16 @@
 (function() {
 
-    // kad kliknem na neki clanak otvara ga preko cele strane, i pojavljuje se back dugme
     // kad klikne na vec otvoreni glavni, ne upucuje opet ajax poziv, samo ga rasiri
     // ako ima samo glavni rezultat, nema ostalih, mozda rasiriti ga (npr pariguz)
-    // ubaciti back dugme i autofokus
-    // provera za max number
     // ubaciti ostale wiki projekte
     // ubaciti paramUrl u dokumentaciju
+    // odvojiti servise
 
     'use strict';
     angular
         .module("wikiModul", ['ngSanitize'])
-        .controller('WikiController', WikiController);
-
+        .controller('WikiController', WikiController)
+        .directive('autofocus', ['$timeout', autofocus]);
 
     function WikiController($http, $window) {
 
@@ -23,7 +21,7 @@
         wiki.page = null;
         wiki.results = null;
         wiki.error = "";
-		wiki.leadLarge = false;
+        wiki.leadLarge = false;
 
         // common static params for open and search
         var commonParams = {
@@ -49,7 +47,6 @@
         /*** PUBLIC METHODS ***/
 
         wiki.openArticle = function(title) {
-            // wiki.term = title; // update search term
             if (wiki.page && (wiki.page.title == title)) {
                 wiki.results = removeDupes(title, wiki.results);
                 return;
@@ -75,9 +72,8 @@
             $http.jsonp(paramUrl)
                 .success(function(data) {
                     if (!data.query) {
-                        wiki.results = [];
-                        wiki.page = "";
-                        return;
+                        wiki.emptyResults();
+                        return false;
                     }
                     wiki.results = data.query.pages;
                     wiki.openArticle(term);
@@ -87,12 +83,12 @@
 
 
         wiki.searchForThisTerm = function(title) {
-            if(wiki.leadLarge) {
+            if (wiki.leadLarge) {
                 wiki.term = title;
                 wiki.searchWikipedia(title, wiki.params);
             }
             wiki.toggleLeadLarge();
-        };	// searchForThisTerm
+        }; // searchForThisTerm
 
 
         wiki.updateSearchTerm = function() {
@@ -101,26 +97,38 @@
 
 
         wiki.toggleLeadLarge = function() {
-			wiki.leadLarge = !wiki.leadLarge;
-        };	// toggleLeadLarge
+            wiki.leadLarge = !wiki.leadLarge;
+        }; // toggleLeadLarge
 
 
         wiki.openLarge = function(title) {
-			wiki.page='';
+            wiki.page = '';
             wiki.openArticle(title);
             wiki.leadLarge = true;
-        };	// openLarge
+        }; // openLarge
 
 
-		wiki.selectText = function() {
-			var text = $window.getSelection().toString();
-			wiki.term = text;
-        };	// toggleLeadLarge
+        wiki.selectText = function() {
+            var text = $window.getSelection().toString();
+            wiki.term = text;
+        }; // toggleLeadLarge
 
 
-        wiki.leadPlaceholder = function(){
+        wiki.leadPlaceholder = function() {
             return wiki.leadLarge ? "Search for this term" : "Englarge this article";
         };
+
+
+        wiki.emptyResults = function() {
+            wiki.results = [];
+            wiki.page = "";
+        }; // emptyResults
+
+
+        wiki.checkMax = function() {
+            if (wiki.params.gsrlimit > 50) wiki.params.gsrlimit = 50;
+        }; // checkMax
+
 
         /*** PRIVATE HELPER FUNCTIONS ***/
 
@@ -162,5 +170,17 @@
         } // capitalizeFirst
 
     } // WikiController
+
+
+    function autofocus($timeout) {
+        return {
+            restrict: 'A',
+            link: function($scope, $element) {
+                $timeout(function() {
+                    $element[0].focus();
+                });
+            }
+        };
+    }   // autofocus
 
 })();

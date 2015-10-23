@@ -24,7 +24,7 @@
                         <button class="btn btn-success search-button input-lg" type="submit" ng-click='wiki.searchWikipedia(wiki.term, wiki.params)'>
                             <span class="glyphicon glyphicon-search"></span>
                         </button>
-                        <input ng-model='wiki.term' ng-change='wiki.updateSearchTerm(); wiki.searchWikipedia(wiki.term, wiki.params)' class="form-control input-lg">
+                        <input ng-model='wiki.term' ng-change='wiki.updateSearchTerm(); wiki.searchWikipedia(wiki.term, wiki.params)' class="form-control input-lg" autofocus>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -42,7 +42,7 @@
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
-                        <input type="number" min="1" max="50" ng-model='wiki.params.gsrlimit' ng-change='wiki.searchWikipedia(wiki.term, wiki.params)' class="form-control">
+                        <input type="number" min="1" max="50" ng-model='wiki.params.gsrlimit' ng-change='wiki.checkMax(); wiki.searchWikipedia(wiki.term, wiki.params)' class="form-control">
                     </div>
                 </div>
             </form>
