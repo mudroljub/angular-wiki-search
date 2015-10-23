@@ -97,6 +97,10 @@
         };	// toggleLeadLarge
 
 
+        wiki.leadPlaceholder = function(){
+            return wiki.leadLarge ? "Search for this term" : "Englarge this article";
+        };
+
         /*** PRIVATE HELPER FUNCTIONS ***/
 
         function removeDupes(term, results, redirects) {
