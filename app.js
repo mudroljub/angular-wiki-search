@@ -158,9 +158,9 @@
 
         function serialize(params) {
             var paramString = Object.keys(params).map(function(key) {
-                return key + '=' + params[key];
+                return key + '=' + encodeURIComponent(params[key]);
             }).join('&');
-            return paramString;
+            return (paramString);
         } // serialize
 
         function capitalizeFirst(string) {
