@@ -54,7 +54,6 @@
                 wiki.results = removeDupes(title, wiki.results);
                 return;
             }
-
             var paramUrl = createParamUrl({
                 titles: title
             }, commonParams);
@@ -87,15 +86,15 @@
         }; // searchWikipedia
 
 
-		wiki.enlargeArticle = function() {
+		wiki.toggleLeadLarge = function() {
 			wiki.leadLarge = !wiki.leadLarge;
-        };	// enlargeArticle
+        };	// toggleLeadLarge
 
 
 		wiki.selectText = function() {
 			var text = $window.getSelection().toString();
 			wiki.term = text;
-        };	// enlargeArticle
+        };	// toggleLeadLarge
 
 
         /*** PRIVATE HELPER FUNCTIONS ***/
