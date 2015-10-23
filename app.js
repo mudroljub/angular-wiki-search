@@ -1,10 +1,8 @@
 (function() {
 
-    // kad klikne na vec otvoreni glavni, ne upucuje opet ajax poziv, samo ga rasiri
-    // ako ima samo glavni rezultat, nema ostalih, mozda rasiriti ga (npr pariguz)
+    // odvojiti servise
     // ubaciti ostale wiki projekte
     // ubaciti paramUrl u dokumentaciju
-    // odvojiti servise
 
     'use strict';
     angular
