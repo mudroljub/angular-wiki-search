@@ -14,7 +14,7 @@
         .controller('WikiController', WikiController);
 
 
-    function WikiController($http) {
+    function WikiController($http, $window) {
 
         var wiki = this;
         wiki.term = 'zen'; // default
@@ -45,11 +45,8 @@
             exintro: '' // extracts intro
         };
 
-        /*** PUBLIC METHODS ***/
 
-		wiki.enlargeArticle = function() {
-			wiki.leadLarge = !wiki.leadLarge;
-        };	// enlargeArticle
+        /*** PUBLIC METHODS ***/
 
         wiki.openArticle = function(title) {
             // wiki.term = title; // update search term
@@ -88,6 +85,17 @@
                 })
                 .error(handleErrors);
         }; // searchWikipedia
+
+
+		wiki.enlargeArticle = function() {
+			wiki.leadLarge = !wiki.leadLarge;
+        };	// enlargeArticle
+
+
+		wiki.selectText = function() {
+			var text = $window.getSelection().toString();
+			wiki.term = text;
+        };	// enlargeArticle
 
 
         /*** PRIVATE HELPER FUNCTIONS ***/
