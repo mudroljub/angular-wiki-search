@@ -15,7 +15,7 @@
 
 <body ng-app='wikiModul' ng-controller='WikiController as wiki' ng-init='wiki.searchWikipedia(wiki.term, wiki.params)' >
 
-    <header>
+    <header class="header">
         <section class="container">
             <form class="search-form row" role="form">
 
@@ -58,7 +58,7 @@
 
         <div class="row">
 
-            <div ng-class="wiki.leadLarge ? 'hidden' : 'col-md-6 col-md-push-6'">
+            <div ng-class="wiki.leadLarge ? 'col-md-12' : 'col-md-6 col-md-push-6'">
                 <button ng-show="wiki.leadLarge" class="btn btn-link" ng-click="wiki.toggleLeadLarge()">« Back</button>
                 <section class='choosen-article-wrapper' ng-show='wiki.page'>
                     <article class="choosen-article clearfix">
@@ -72,10 +72,10 @@
                 </section>
             </div>
 
-            <div ng-class="wiki.leadLarge ? 'col-md-12' : 'col-md-6 col-md-pull-6'">
+            <div ng-class="wiki.leadLarge ? 'hidden' : 'col-md-6 col-md-pull-6'">
                 <article ng-repeat="page in wiki.results" class="articles clearfix">
                     <h2 class="text-info">
-                        <span class="pointer" title="Open this article" ng-click="wiki.page=''; wiki.openArticle(page.title); wiki.toggleLeadLarge()">{{page.title}}</span>
+                        <span class="pointer" title="Open this article" ng-click="wiki.openLarge(page.title)">{{page.title}}</span>
                     </h2>
                     <img ng-src="{{page.thumbnail.source}}" alt="{{page.title}}" class="img-thumbnail" ng-show="page.thumbnail.source">
                     <section ng-bind-html='page.extract' ng-dblclick="wiki.selectText()"></section>

@@ -86,9 +86,16 @@
         }; // searchWikipedia
 
 
-		wiki.toggleLeadLarge = function() {
+        wiki.toggleLeadLarge = function() {
 			wiki.leadLarge = !wiki.leadLarge;
         };	// toggleLeadLarge
+
+
+        wiki.openLarge = function(title) {
+			wiki.page='';
+            wiki.openArticle(title);
+            wiki.leadLarge = true;
+        };	// openLarge
 
 
 		wiki.selectText = function() {

@@ -11,21 +11,26 @@
     transition: all 0.3s ease-out;
 }
 
-header {
+/* HELPER CLASSES */
+
+.pointer {
+    cursor: pointer;
+}
+
+/* HEADER */
+
+.header {
     background: #F1F1F1;
     padding: 10px 20px;
     margin-bottom: 20px;
-}
-
-.wiki-logo {
-    height: 50px;
-    position: absolute;
 }
 
 .search-button {
     position:absolute;
     right:0;
 }
+
+/* MAIN PAGE */
 
 .main {
     margin-bottom: 40px;
@@ -41,7 +46,7 @@ header {
     padding: 0 20px;
 }
 
-.col-md-6 .choosen-article {
+.col-md-6 .choosen-article {    /* have max-height only in column */
     max-height: 1200px;
     overflow-y: scroll;
 }
@@ -50,6 +55,6 @@ header {
     margin-right: 30px;
 }
 
-.pointer {
-    cursor: pointer;
+.choosen-article-wrapper .read-more {
+    margin-top: 10px;
 }
