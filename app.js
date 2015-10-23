@@ -1,6 +1,6 @@
 (function() {
 
-    // odvojiti servise
+    // veliku sliku za glavni clanak
     // ubaciti ostale wiki projekte
     // ubaciti paramUrl u dokumentaciju
 
