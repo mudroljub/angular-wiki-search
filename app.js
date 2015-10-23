@@ -69,7 +69,7 @@
 
 
         wiki.searchWikipedia = function(term, params) {
-            updateSearchTerm();
+            params.gsrsearch = wiki.searchFilter + term;
             var paramUrl = createParamUrl(params, commonParams);
 
             $http.jsonp(paramUrl)
@@ -84,6 +84,20 @@
                 })
                 .error(handleErrors);
         }; // searchWikipedia
+
+
+        wiki.searchForThisTerm = function(title) {
+            if(wiki.leadLarge) {
+                wiki.term = title;
+                wiki.searchWikipedia(title, wiki.params);
+            }
+            wiki.toggleLeadLarge();
+        };	// searchForThisTerm
+
+
+        wiki.updateSearchTerm = function() {
+            wiki.params.gsrsearch = wiki.searchFilter + wiki.term;
+        }; // updateSearchTerm
 
 
         wiki.toggleLeadLarge = function() {
@@ -124,10 +138,6 @@
             } // end for
             return results;
         } // removeDupes
-
-        function updateSearchTerm() {
-            wiki.params.gsrsearch = wiki.searchFilter + wiki.term;
-        } // updateSearchTerm
 
         function handleErrors() {
             wiki.error = "Oh no, there was some error in geting data.";

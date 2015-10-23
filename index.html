@@ -13,7 +13,7 @@
     <script src='app.js'></script>
 </head>
 
-<body ng-app='wikiModul' ng-controller='WikiController as wiki' ng-init='wiki.searchWikipedia(wiki.term, wiki.params)' >
+<body ng-app='wikiModul' ng-controller='WikiController as wiki' ng-init='wiki.updateSearchTerm(); wiki.searchWikipedia(wiki.term, wiki.params)' >
 
     <header class="header">
         <section class="container">
@@ -24,7 +24,7 @@
                         <button class="btn btn-success search-button input-lg" type="submit" ng-click='wiki.searchWikipedia(wiki.term, wiki.params)'>
                             <span class="glyphicon glyphicon-search"></span>
                         </button>
-                        <input ng-model='wiki.term' ng-change='wiki.searchWikipedia(wiki.term, wiki.params)' class="form-control input-lg">
+                        <input ng-model='wiki.term' ng-change='wiki.updateSearchTerm(); wiki.searchWikipedia(wiki.term, wiki.params)' class="form-control input-lg">
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -59,15 +59,16 @@
         <div class="row">
 
             <div ng-class="wiki.leadLarge ? 'col-md-12' : 'col-md-6 col-md-push-6'">
-                <button ng-show="wiki.leadLarge" class="btn btn-link" ng-click="wiki.toggleLeadLarge()">« Back</button>
+                <button title="Back to serch results" class="btn btn-link" ng-show="wiki.leadLarge" ng-click="wiki.toggleLeadLarge()">« Back</button>
                 <section class='choosen-article-wrapper' ng-show='wiki.page'>
                     <article class="choosen-article clearfix">
                         <h1 class="text-info">
-                            <span class="pointer" title="{{ wiki.leadPlaceholder(); }}" ng-click="wiki.toggleLeadLarge(); wiki.term = wiki.page.title">{{wiki.page.title}}</span>
+                            <span class="pointer" title="{{wiki.leadPlaceholder()}}" ng-click="wiki.searchForThisTerm(wiki.page.title)">{{wiki.page.title}}</span>
                         </h1>
                         <img ng-src="{{wiki.page.thumbnail.source}}" alt="{{wiki.page.title}}" class="img-thumbnail" ng-show="wiki.page.thumbnail.source">
                         <section ng-bind-html='wiki.page.extract' ng-dblclick="wiki.selectText()"></section>
                     </article>
+                    <button title="Back to serch results" class="btn btn-link" ng-show="wiki.leadLarge" ng-click="wiki.toggleLeadLarge()">« Back</button>
                     <p class="read-more text-info pull-right"><a ng-href="https://en.wikipedia.org/wiki/{{wiki.page.title}}" target="_blank">Read on Wikipedia >> </a></p>
                 </section>
             </div>
