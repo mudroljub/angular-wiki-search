@@ -1,5 +1,5 @@
 # Angular Wiki Search
-AngularJS module for power searching Wikipedia using MediaWiki API.
+AngularJS module for consuming Wikipedia API.
 
 See it in action: [http://mudroljub.github.io/angular-wiki-search/](http://mudroljub.github.io/angular-wiki-search/)
 
