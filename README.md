@@ -4,7 +4,7 @@ AngularJS module for consuming Wikipedia API.
 See it in action: [mudroljub.github.io/angular-wiki-search/](http://mudroljub.github.io/angular-wiki-search/)
 
 ## Install
-Just download the directory and open index.html file. You can also do it developer way:
+Just download the directory and open index.html file:
 
 ```sh
 $ git clone https://github.com/mudroljub/angular-wiki-search.git
