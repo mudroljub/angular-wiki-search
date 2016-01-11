@@ -7,7 +7,7 @@ See it in action: [mudroljub.github.io/angular-wiki-search/](http://mudroljub.gi
 Just download the directory and open index.html file. You can also do it developer way:
 
 ```sh
-$ git clone https://github.com/mudroljub/angular-wiki-module.git
+$ git clone https://github.com/mudroljub/angular-wiki-search.git
 $ bower install
 $ open index.html
 ```
