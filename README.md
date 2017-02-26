@@ -1,6 +1,6 @@
 #[Angular Wiki Search](http://mudroljub.github.io/angular-wiki-search/)
 
-AngularJS module for consuming Wikipedia API.
+AngularJS module for rapid Wikipedia search.
 
 See it in action: [mudroljub.github.io/angular-wiki-search](http://mudroljub.github.io/angular-wiki-search/)
 
