@@ -1,3 +1,5 @@
+![](screen.png)
+
 # [Angular Wiki Search](http://mudroljub.github.io/angular-wiki-search/)
 
 AngularJS module for rapid Wikipedia search.
