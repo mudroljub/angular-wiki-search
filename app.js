@@ -72,7 +72,7 @@
 		/*** HELPER FUNCTIONS ***/
 
 		function createParamUrl(params) {
-			var apiUrl = 'http://en.wikipedia.org/w/api.php';
+			var apiUrl = '//en.wikipedia.org/w/api.php';
 			// default params for all
 			params.action = 'query';
 			params.prop = 'extracts|pageimages';
